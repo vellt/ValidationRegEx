@@ -19,7 +19,7 @@ namespace ValidationsRegEx.utilities
 
     public static class Validations
     {
-        static class RegExPatterns
+        private static class Pattern
         {
             public static string Int => @"^[0-9]+$";
             public static string Double => @"^-?(?:0|[1-9][0-9]*)\.?[0-9]+$";
@@ -32,11 +32,11 @@ namespace ValidationsRegEx.utilities
         {
             return validation switch
             {
-                For.Int => new Regex(RegExPatterns.Int).IsMatch(text),
-                For.Double => new Regex(RegExPatterns.Double).IsMatch(text),
-                For.Number => new Regex(RegExPatterns.Number).IsMatch(text),
-                For.Phone => new Regex(RegExPatterns.Phone).IsMatch(text),
-                For.Email => new Regex(RegExPatterns.Email).IsMatch(text),
+                For.Int => new Regex(Pattern.Int).IsMatch(text),
+                For.Double => new Regex(Pattern.Double).IsMatch(text),
+                For.Number => new Regex(Pattern.Number).IsMatch(text),
+                For.Phone => new Regex(Pattern.Phone).IsMatch(text),
+                For.Email => new Regex(Pattern.Email).IsMatch(text),
                 _ => false,
             };
         }
